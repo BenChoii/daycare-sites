@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Candy Factory Day Care — A Sweet Place to Play & Learn</title>
+<meta name="description" content="A warm, licensed daycare in Toronto's Bloordale Village. Infant, toddler & preschool programs at 1411 Bloor St W. A sweet place to play and learn." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3F6CB0; --blue-deep:#2C5187; --pink:#E29AAC; --pink-deep:#D27F94;
+    --pink-soft:#F7DEE5; --blue-soft:#DCE8F6; --cream:#FBF6F2; --paper:#FFFFFF;
+    --ink:#39495F; --muted:#6E7E94; --line:#ECE4DE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Nunito Sans',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:500;line-height:1.08;color:var(--blue)}
+  .ital{font-style:italic;color:var(--pink-deep)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  img{display:block;max-width:100%}
+
+  header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(251,246,242,.85);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand img{height:54px;width:auto}
+  .links{display:flex;gap:30px;align-items:center}
+  .links a{font-size:15px;color:var(--ink);font-weight:600;position:relative;padding:4px 0}
+  .links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--pink);transition:width .25s}
+  .links a:hover::after{width:100%}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--blue);color:#fff;padding:13px 24px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .2s,background .2s;border:none;cursor:pointer}
+  .btn:hover{background:var(--blue-deep);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+  .btn.ghost:hover{background:var(--blue-soft);transform:translateY(-2px)}
+
+  .hero{position:relative;padding:64px 0 86px}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);padding:8px 16px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);display:inline-block}
+  .hero h1{font-size:clamp(48px,6.4vw,96px);margin:24px 0 20px}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:480px;margin-bottom:32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-art{position:relative}
+  .hero-art .blob{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F4C9D4,#E29AAC);right:-30px;top:-26px;z-index:0}
+  .hero-art .blob.b2{width:120px;height:120px;left:-26px;bottom:-20px;background:var(--blue-soft)}
+  .hero-photo{position:relative;z-index:1;border-radius:28px;overflow:hidden;box-shadow:0 26px 60px rgba(63,108,176,.22);aspect-ratio:4/3;background:var(--blue-soft)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+  .pill{position:absolute;z-index:2;padding:9px 20px;border-radius:999px;font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--blue-deep);background:#fff;box-shadow:0 10px 28px rgba(63,108,176,.16);animation:float 6s ease-in-out infinite}
+  .pill.pk{background:var(--pink-soft);color:var(--pink-deep)}
+  .pill.p1{top:-18px;left:24px}
+  .pill.p2{bottom:30px;right:-22px;animation-delay:1.2s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden;background:var(--paper)}
+  .track{display:flex;white-space:nowrap;width:max-content;animation:scroll 28s linear infinite}
+  .track span{font-family:'Playfair Display',serif;font-size:34px;color:var(--blue);padding:0 34px;display:inline-flex;align-items:center;gap:34px}
+  .track i{color:var(--pink);font-style:normal;font-size:13px}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  section.band{padding:104px 0}
+  .num{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--pink-deep);font-weight:800;margin-bottom:24px}
+  .statement{font-size:clamp(29px,4.1vw,54px);max-width:980px;margin:0 auto;text-align:center;line-height:1.18}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about-grid h2{font-size:clamp(32px,4vw,48px);margin-bottom:22px}
+  .about-grid p{color:var(--muted);font-size:17px;margin-bottom:16px}
+  .photo{border-radius:26px;overflow:hidden;box-shadow:0 20px 50px rgba(63,108,176,.16);aspect-ratio:3/2}
+  .photo img{width:100%;height:100%;object-fit:cover}
+
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+  .sec-head h2{font-size:clamp(34px,4.4vw,54px);margin-bottom:16px}
+  .sec-head p{color:var(--muted);font-size:18px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(63,108,176,.12)}
+  .card .cimg{aspect-ratio:3/2;overflow:hidden;background:var(--blue-soft)}
+  .card .cimg img{width:100%;height:100%;object-fit:cover}
+  .card .pad{padding:28px 30px 34px}
+  .card .pn{font-family:'Playfair Display',serif;font-size:15px;color:var(--pink-deep)}
+  .card h3{font-size:25px;margin:6px 0 2px}
+  .card .age{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .card p{color:var(--muted);font-size:15.5px}
+
+  .day{background:var(--paper)}
+  .timeline{max-width:760px;margin:0 auto;display:flex;flex-direction:column}
+  .slot{display:grid;grid-template-columns:120px 1fr;gap:28px;padding:22px 0;border-bottom:1px solid var(--line)}
+  .slot .t{font-family:'Playfair Display',serif;font-size:20px;color:var(--pink-deep)}
+  .slot h4{font-size:18px;color:var(--blue);margin-bottom:3px}
+  .slot p{color:var(--muted);font-size:15px}
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gallery .g{border-radius:20px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 12px 34px rgba(63,108,176,.12)}
+  .gallery .g:first-child{grid-row:span 2;aspect-ratio:auto}
+  .gallery .g img{width:100%;height:100%;object-fit:cover}
+
+  .contact{background:linear-gradient(160deg,var(--blue-soft),var(--cream))}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:stretch}
+  .contact h2{font-size:clamp(34px,4.4vw,52px);margin-bottom:20px}
+  .info{list-style:none;display:flex;flex-direction:column;gap:20px;margin-top:8px}
+  .info li{display:flex;gap:16px;align-items:flex-start}
+  .info .k{width:46px;height:46px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;box-shadow:0 6px 18px rgba(63,108,176,.1)}
+  .info b{display:block;color:var(--blue);font-size:16px}
+  .info span{color:var(--muted);font-size:15px}
+  .mapcard{border-radius:24px;overflow:hidden;min-height:360px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(63,108,176,.12)}
+  .mapcard iframe{width:100%;height:100%;border:0;display:block;min-height:360px}
+
+  footer{background:var(--blue-deep);color:#dbe6f5;padding:60px 0 34px}
+  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+  footer .name{font-family:'Playfair Display',serif;font-size:24px;color:#fff}
+  footer .sub{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#a9c2e4}
+  .foot-links{display:flex;gap:40px;flex-wrap:wrap}
+  .foot-links h5{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+  .foot-links a{display:block;color:#bcd0ec;font-size:14px;margin-bottom:8px}
+  .foot-links a:hover{color:#fff}
+  .copy{border-top:1px solid rgba(255,255,255,.15);margin-top:40px;padding-top:22px;font-size:13px;color:#9db6da;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-art{order:-1}
+    .cards,.gallery{grid-template-columns:1fr}
+    .gallery .g:first-child{grid-row:auto;aspect-ratio:1/1}
+    .links{display:none}
+    .slot{grid-template-columns:90px 1fr;gap:16px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="The Candy Factory Day Care">
+        <img src="https://www.candyfactorydaycare.com/assets/img/50968_logo_background_removed.png" alt="The Candy Factory Day Care">
+      </a>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#day">Our Day</a>
+        <a href="#spaces">Spaces</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="btn">Join the waitlist →</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="badge"><span class="dot"></span> Now enrolling · Bloordale Village</span>
+        <h1>A sweet place<br>to <span class="ital">play &amp; learn.</span></h1>
+        <p class="lead">A warm, licensed home for little ones in the heart of Toronto — where infants, toddlers and preschoolers grow through play, care and curiosity. Right on Bloor, closer than you think.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Join the waitlist →</a>
+          <a href="#programs" class="btn ghost">See our programs</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="blob"></div>
+        <div class="blob b2"></div>
+        <span class="pill pk p1">Wonder</span>
+        <div class="hero-photo">
+          <img src="https://www.candyfactorydaycare.com/assets/img/top_slider_2__.jpg" alt="Children playing at The Candy Factory Day Care">
+        </div>
+        <span class="pill p2">Curiosity</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Play <i>●</i> Nutrition <i>●</i> Daily photos <i>●</i> Curiosity <i>●</i> Family <i>●</i> Belonging <i>●</i> Outdoor time <i>●</i> Kindness <i>●</i></span>
+      <span>Play <i>●</i> Nutrition <i>●</i> Daily photos <i>●</i> Curiosity <i>●</i> Family <i>●</i> Belonging <i>●</i> Outdoor time <i>●</i> Kindness <i>●</i></span>
+    </div>
+  </div>
+
+  <section class="band" id="vision">
+    <div class="wrap">
+      <p class="num reveal" style="text-align:center">01 — Who we are</p>
+      <p class="statement serif reveal">One of the most important stages of a child's life — handled with the <span class="ital">warmth, care,</span> and <span class="ital">attention</span> it deserves.</p>
+    </div>
+  </section>
+
+  <section class="band" id="about" style="padding-top:0">
+    <div class="wrap about-grid">
+      <div class="photo reveal"><img src="https://www.candyfactorydaycare.com/assets/img/about__thumb.jpg" alt="Inside The Candy Factory Day Care"></div>
+      <div class="reveal">
+        <p class="num">A Toronto tradition</p>
+        <h2>Welcome to The Candy Factory.</h2>
+        <p>Tucked into Bloordale Village at 1411 Bloor St West, The Candy Factory Day Care has been a sweet, familiar part of Toronto's west end for years. We're a licensed centre caring for children from infancy through their preschool years.</p>
+        <p>Our days are built around play, real food, fresh air and genuine relationships — the simple things that help a child feel safe enough to be curious. Families stay close to what's happening through daily photos and updates, so the connection never stops at our front door.</p>
+        <p>Open Monday to Friday, 7:30&nbsp;AM&nbsp;–&nbsp;6:00&nbsp;PM, and proud to participate in the Canada-Wide Early Learning &amp; Child Care system.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="programs" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="num">02 — Our programs</p>
+        <h2>Room to grow at every age</h2>
+        <p>Three age-based programs, each with its own gentle rhythm — from first steps to school-ready.</p>
+      </div>
+      <div class="cards">
+        <div class="card reveal">
+          <div class="cimg"><img src="https://www.candyfactorydaycare.com/assets/img/infance_care__.jpg" alt="Infant care"></div>
+          <div class="pad">
+            <span class="pn">Program 01</span>
+            <h3>Infants</h3>
+            <div class="age">0 – 17 months</div>
+            <p>Unhurried, loving care that follows your baby's own schedule — feeding, sleeping and plenty of cuddles, with photo updates so you never miss a milestone.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="cimg"><img src="https://www.candyfactorydaycare.com/assets/img/how_work__thumb.jpg" alt="Toddler play"></div>
+          <div class="pad">
+            <span class="pn">Program 02</span>
+            <h3>Toddlers</h3>
+            <div class="age">18 – 29 months</div>
+            <p>A busy little world of movement, music and discovery, where growing minds explore textures, words and friendships in a safe, encouraging space.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="cimg"><img src="https://www.candyfactorydaycare.com/assets/img/pre_school__thumb.jpg" alt="Preschool learning"></div>
+          <div class="pad">
+            <span class="pn">Program 03</span>
+            <h3>Preschool</h3>
+            <div class="age">30+ months</div>
+            <p>Hands-on learning that builds confidence and curiosity — early literacy, creativity and the social skills that get children excited and ready for kindergarten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band day" id="day">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="num">03 — A day with us</p>
+        <h2>No two days look quite the same</h2>
+        <p>A gentle, predictable rhythm with lots of room for play, rest and wonder.</p>
+      </div>
+      <div class="timeline">
+        <div class="slot reveal"><div class="t">7:30</div><div><h4>Warm welcomes</h4><p>Doors open with soft starts, breakfast and a friendly face for every family.</p></div></div>
+        <div class="slot reveal"><div class="t">9:30</div><div><h4>Morning play &amp; circle</h4><p>Songs, stories and child-led discovery — indoors and out.</p></div></div>
+        <div class="slot reveal"><div class="t">11:30</div><div><h4>Lunch &amp; nutrition</h4><p>Healthy, allergy-aware meals that fuel busy little bodies.</p></div></div>
+        <div class="slot reveal"><div class="t">1:00</div><div><h4>Rest &amp; quiet time</h4><p>Naps and calm corners to recharge for the afternoon.</p></div></div>
+        <div class="slot reveal"><div class="t">3:00</div><div><h4>Afternoon adventures</h4><p>Art, sensory play and outdoor time, with photos shared to families.</p></div></div>
+        <div class="slot reveal"><div class="t">6:00</div><div><h4>Heading home</h4><p>Goodbyes, a recap of the day and a story to tell at the dinner table.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="spaces" style="background:var(--paper);border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="num">04 — Our spaces</p>
+        <h2>Bright rooms, made for little hands</h2>
+      </div>
+      <div class="gallery">
+        <div class="g reveal"><img src="https://www.candyfactorydaycare.com/assets/img/service_menu__.jpg" alt="Our space"></div>
+        <div class="g reveal"><img src="https://www.candyfactorydaycare.com/assets/img/about_menu__.jpg" alt="Play area"></div>
+        <div class="g reveal"><img src="https://www.candyfactorydaycare.com/assets/img/gallery/gallery_cover_04_187_2024_1.jpg" alt="Children's activity"></div>
+        <div class="g reveal"><img src="https://www.candyfactorydaycare.com/assets/img/top_slider_2__.jpg" alt="Classroom"></div>
+        <div class="g reveal"><img src="https://www.candyfactorydaycare.com/assets/img/how_work__thumb.jpg" alt="Learning together"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <p class="num">05 — Visit us</p>
+        <h2>Come say hello.</h2>
+        <p style="color:var(--muted);font-size:17px;max-width:420px">We'd love to show you around. Reach out to arrange a visit or to add your little one to our waitlist.</p>
+        <ul class="info">
+          <li><span class="k">📍</span><span><b>1411 Bloor St W</b><span>Toronto, Ontario M6P 3L4</span></span></li>
+          <li><span class="k">📞</span><span><b>416 537 3682</b><span>Mon – Fri, 7:30 AM – 6:00 PM</span></span></li>
+          <li><span class="k">✉️</span><span><b>info@candyfactorydaycare.com</b><span>For tours, waitlist &amp; questions</span></span></li>
+        </ul>
+        <a href="mailto:info@candyfactorydaycare.com" class="btn" style="margin-top:30px">Email us →</a>
+      </div>
+      <div class="mapcard reveal">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to The Candy Factory Day Care"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.566004620881!2d-79.44956898499373!3d43.65719706019113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b344785ad4b8f%3A0x7c73cfcfb1dcb883!2s1411%20Bloor%20St%20W%2C%20Toronto%2C%20ON%20M6P%203L4%2C%20Canada!5e0!3m2!1sen!2s!4v1604072778045!5m2!1sen!2s"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="name">The Candy Factory Day Care</div>
+        <div class="sub">A Sweet Place to Play &amp; Learn</div>
+        <p style="margin-top:16px;color:#bcd0ec;font-size:14px;max-width:300px">1411 Bloor St W, Toronto, ON M6P 3L4<br>Licensed · CWELCC participating centre</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h5>Explore</h5>
+          <a href="#about">About</a>
+          <a href="#programs">Programs</a>
+          <a href="#day">Our Day</a>
+          <a href="#spaces">Spaces</a>
+        </div>
+        <div>
+          <h5>Connect</h5>
+          <a href="#contact">Contact &amp; tours</a>
+          <a href="mailto:info@candyfactorydaycare.com">Email us</a>
+          <a href="tel:+14165373682">416 537 3682</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 The Candy Factory Day Care. All rights reserved.</span>
+      <span>Preview site crafted by Mitten · mitten.care</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
